@@ -1,9 +1,11 @@
 class User < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images
 
   def dup
     super.tap do |new_user|
-      new_user.image.attach(image.blob)
+      images.each do |image|
+        new_user.images.attach(image.blob)
+      end
     end
   end
 end

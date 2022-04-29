@@ -4,11 +4,11 @@
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
-<% if @user.image.attached? %>
-  <p>
-  <%= image_tag @user.image %>
-  </p>
-<% end %>
+  <% @user.images.each do |image| %>
+    <p>
+      <%= image_tag image %>
+    </p>
+  <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
